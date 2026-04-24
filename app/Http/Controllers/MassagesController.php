@@ -12,7 +12,12 @@ class MassagesController extends Controller
      */
     public function index()
     {
-        //
+
+
+        return view('massages.index', [
+            'title' => 'Massages',
+            'messages' => massages::all()
+            ]);
     }
 
     /**
@@ -20,7 +25,7 @@ class MassagesController extends Controller
      */
     public function create()
     {
-        //
+        return view('massages.create', ['title' => 'Create Massage']);
     }
 
     /**
