@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\massages;
+use App\Models\Massages;
 use Illuminate\Http\Request;
 
 class MassagesController extends Controller
@@ -16,7 +16,7 @@ class MassagesController extends Controller
 
         return view('massages.index', [
             'title' => 'Massages',
-            'messages' => massages::all()
+            'massages' => Massages::all()
             ]);
     }
 
@@ -25,16 +25,25 @@ class MassagesController extends Controller
      */
     public function create()
     {
-        return view('massages.create', ['title' => 'Create Massage']);
+        return view('massages.create', ['title' => 'Create massages']);
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
+{$validated = $request->validate([
+    'name' => 'required|max:25',
+    'pengirim' => 'required|max:50',
+    'penerima' => 'required|max:50',
+    'judul_pesan' => 'required|max:100',
+    'isi_pesan' => 'required|max:100',
+]);
+
+    Massages::create($validated);
+
+    return to_route('massages.index')->withSuccess('Pesan berhasil dibuat!');
+}
 
     /**
      * Display the specified resource.
