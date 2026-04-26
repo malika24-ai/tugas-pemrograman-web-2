@@ -58,16 +58,29 @@ class MassagesController extends Controller
      */
     public function edit(massages $massages)
     {
-        //
+            return view('massages.edit', [
+            'title' => 'edit Massages',
+            'massages' => $massages
+            ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, massages $massages)
-    {
-        //
-    }
+public function update(Request $request, massages $massages)
+
+    {$validated = $request->validate([
+    'name' => 'required|max:25',
+    'pengirim' => 'required|max:50',
+    'penerima' => 'required|max:50',
+    'judul_pesan' => 'required|max:100',
+    'isi_pesan' => 'required|max:100',
+]);
+
+    $massages->update($validated);
+
+    return to_route('massages.index')->withSuccess('Pesan berhasil dibuat!');
+}
 
     /**
      * Remove the specified resource from storage.
