@@ -16,7 +16,7 @@ class MassagesController extends Controller
 
         return view('massages.index', [
             'title' => 'Massages',
-            'massages' => Massages::all()
+            'massages' => Massages::latest()->get()
             ]);
     }
 
@@ -86,7 +86,8 @@ public function update(Request $request, massages $massages)
      * Remove the specified resource from storage.
      */
     public function destroy(massages $massages)
-    {
-        //
+    { 
+    $massages->delete();
+    return to_route('massages.index')->withSuccess('Pesan berhasil dihapus!');
     }
 }

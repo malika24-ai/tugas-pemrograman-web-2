@@ -19,7 +19,17 @@
             {{ $massages->penerima}} -- {{ $massages->judul_pesan }} --  {{ $massages->isi_pesan }}
             <a class="btn btn-info btn-sm" href="{{ route('massages.edit',$massages) }}"
     role="button">edit</a>
-    
+    <form action="{{ route('massages.destroy',$massages) }}" method="POST" class="d-inline" >
+
+    @method('DELETE')
+    @csrf
+
+
+    <button type="submit" class="btn btn-danger btn-sm"onclick="return confirm('anda yakin?')">Delete</button>
+
+</form>
+
+
         </li>
     @endforeach
 

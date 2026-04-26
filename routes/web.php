@@ -12,5 +12,6 @@ Route::get('/massages/create', [MassagesController::class, 'create'])->name('mas
 Route::post('/massages/store', [MassagesController::class, 'store'])->name('massages.store');
 Route::get('/massages/{massages}/edit', [MassagesController::class, 'edit'])->name('massages.edit');
 Route::put('/massages/{massages}', [MassagesController::class, 'update'])->name('massages.update');
+Route::delete('/massages/{massages}', [MassagesController::class, 'destroy' ])->name('massages.destroy');
 
 
