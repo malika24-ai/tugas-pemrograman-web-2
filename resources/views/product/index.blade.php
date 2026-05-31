@@ -16,6 +16,10 @@
                     {{ $product->name_pembeli }} --{{ $product->name_product }} --
                     {{ $product->jumlah }} --{{ $product->merk }} --
                     {{ $product->tgl_beli }}
+
+                    <a class="btn btn-warning " href="{{ route('product.edit', $product) }}" role="button">edit</a>
+
+
                 </li>
             @endforeach
         </ul>
