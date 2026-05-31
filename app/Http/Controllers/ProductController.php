@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
         return view('product.index',
         ['title' => 'Product',
-        'products' => Product::all()
+        'products' => Product::latest()->get(),
         ]);  
     }
 
@@ -108,7 +108,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        
+        $product->delete($product);
+        return redirect()->route('product.index') ->with('success', 'Data berhasil dihapus');
     }
 
 }

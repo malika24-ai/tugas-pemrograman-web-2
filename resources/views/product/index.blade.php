@@ -19,6 +19,15 @@
 
                     <a class="btn btn-warning " href="{{ route('product.edit', $product) }}" role="button">edit</a>
 
+                    <form action="{{ route('product.destroy', $product) }}" method="POST" class="d-inline">
+                        @method('DELETE')
+                        @csrf
+
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            onclick ="return confirm('Anda yakin')">Delete</button>
+
+                    </form>
+
 
                 </li>
             @endforeach
