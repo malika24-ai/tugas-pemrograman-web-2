@@ -23,7 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create',['title' => 'Create Product']);
+        return view('product.create',
+        ['title' => 'Create Product']);
     }
 
     /**

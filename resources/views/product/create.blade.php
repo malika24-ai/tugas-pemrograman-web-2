@@ -2,6 +2,6 @@
 
     <x-slot:title> {{ $title }}</x-slot:>
 
-        <h1 class="fw-bold">From CreateProduct</h1>
+        <h1 class="fw-bold">From Create Product</h1>
 
 </x-app>
