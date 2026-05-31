@@ -12,7 +12,7 @@
 <body>
 
     {{-- page title --}}
-    <div class="bg-info py-5 text-center text-white">
+    <div class="bg-info py-5 text-center text-dark">
         <h1 class="fw-bold">{{ $title }}</h1>
     </div>
 

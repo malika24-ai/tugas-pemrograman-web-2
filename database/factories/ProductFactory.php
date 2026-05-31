@@ -18,14 +18,14 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-        'nama_product' => fake()->randomElement([
+        'name_pembeli' => fake()->name(),
+        'name_product' => fake()->randomElement([
         'Nike Air Max',
         'Adidas Samba',
         'Puma Future'
     ]),
-            'nama_pembeli' => fake()->name(),
-            'jumlah' => fake()->numberBetween(1, 10),
             'merk' => fake()->randomElement(['Nike', 'Adidas', 'Puma']),
+            'jumlah' => fake()->numberBetween(1, 10),
             'tgl_beli' => fake()->date(),
         ];
         
