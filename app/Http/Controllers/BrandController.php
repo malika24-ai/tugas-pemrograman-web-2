@@ -26,7 +26,7 @@ class BrandController extends Controller
     {
         return view('brand.create',
         ['title' => 'Create Brand',
-        'categorys' => Category::latest()->get(),
+        'categories' => Category::latest()->get(),
         ]);
     }
     
@@ -37,18 +37,18 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-        'name_product' => 'required|max:255',
+        'name' => 'required|max:255',
         'category_id' => 'required|exists:categories,id',
         
     ],
     [
-        'name_product.required' => 'Nama produk wajib diisi',
+        'name.required' => 'Nama brand wajib diisi',
         'category_id.required' => 'Kategori wajib dipilih',
         'category_id.exists' => 'Kategori yang dipilih tidak valid',
     ]);
 
     Brand::create($validated);
-    return redirect()->route('product.index')
+    return redirect()->route('brand.index')
         ->with('success', 'Data berhasil ditambahkan');
     }
 
@@ -65,7 +65,11 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('brand.edit', [
+            'title' => 'Edit Brand',
+            'brand' => $brand,
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
@@ -73,7 +77,20 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        //
+        $validated = $request->validate([
+        'name' => 'required|max:255',
+        'category_id' => 'required|exists:categories,id',
+        
+    ],
+    [
+        'name.required' => 'Nama brand wajib diisi',
+        'category_id.required' => 'Kategori wajib dipilih',
+        'category_id.exists' => 'Kategori yang dipilih tidak valid',
+    ]);
+
+    $brand->update($validated);
+    return redirect()->route('brand.index')
+        ->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -81,6 +98,6 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+    
     }
 }
