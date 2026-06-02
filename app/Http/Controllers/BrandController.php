@@ -86,10 +86,10 @@ class BrandController extends Controller
     public function edit(Brand $brand)
     {
         return view('brand.edit', [
-            'title' => 'Edit Brand',
-            'brand' => $brand,
-            'categorys' => Category::all(),
-        ]);
+        'title' => 'Edit Brand',
+        'brand' => $brand,
+        'categories' => Category::all(),
+    ]);
     }
 
     /**
@@ -97,18 +97,17 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        $validated = $request->validate([
+    $validated = $request->validate([
         'name' => 'required|max:255',
         'category_id' => 'required|exists:categories,id',
-        
     ],
     [
         'name.required' => 'Nama brand wajib diisi',
         'category_id.required' => 'Kategori wajib dipilih',
-        'category_id.exists' => 'Kategori yang dipilih tidak valid',
     ]);
 
     $brand->update($validated);
+
     return redirect()->route('brand.index')
         ->with('success', 'Data berhasil diubah');
     }

@@ -12,6 +12,8 @@
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
                 value="{{ old('name', $brand->name) }}">
 
+            <a class="btn btn-warning"href="{{ route('brand.edit', $brand) }}" role="button">Edit</a>
+
             @error('name')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -41,13 +43,9 @@
             @enderror
         </div>
 
-        <a class="btn btn-warning" href="{{ route('brand.index') }}">
-            Cancel
-        </a>
+        <a class="btn btn-warning" href="{{ route('brand.index') }}"> Cancel</a>
 
-        <button type="submit" class="btn btn-primary">
-            Submit
-        </button>
+        <button type="submit" class="btn btn-primary">Submit </button>
 
     </form>
 
