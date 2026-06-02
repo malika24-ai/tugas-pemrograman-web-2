@@ -36,18 +36,13 @@ class ProductController extends Controller
         $validated = $request->validate([
         'name_product' => 'required|max:255',
         'name_pembeli' => 'required|max:255',
-        'merk' => 'required|max:255',
         'jumlah' => 'required|integer',
-        'tgl_beli' => 'required|date',
     ],
     [
         'name_product.required' => 'Nama produk wajib diisi',
         'name_pembeli.required' => 'Nama pembeli wajib diisi',
-        'merk.required' => 'Merk wajib diisi',
         'jumlah.required' => 'Jumlah wajib diisi',
         'jumlah.integer' => 'Jumlah harus berupa angka',
-        'tgl_beli.required' => 'Tanggal beli wajib diisi',
-        'tgl_beli.date' => 'Tanggal beli harus berupa tanggal yang valid',
     ]);
 
     Product::create($validated);
@@ -82,19 +77,14 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
         'name_product' => 'required|max:255',
-        'name_pembeli' => 'required|max:255',
-        'merk' => 'required|max:255',
         'jumlah' => 'required|integer',
-        'tgl_beli' => 'required|date',
     ],
     [
         'name_product.required' => 'Nama produk wajib diisi',
         'name_pembeli.required' => 'Nama pembeli wajib diisi',
-        'merk.required' => 'Merk wajib diisi',
         'jumlah.required' => 'Jumlah wajib diisi',
         'jumlah.integer' => 'Jumlah harus berupa angka',
-        'tgl_beli.required' => 'Tanggal beli wajib diisi',
-        'tgl_beli.date' => 'Tanggal beli harus berupa tanggal yang valid',
+        
     ]);
 
     $product->update($validated);

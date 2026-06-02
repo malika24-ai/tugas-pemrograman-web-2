@@ -24,9 +24,7 @@ class ProductFactory extends Factory
         'Adidas Samba',
         'Puma Future'
     ]),
-            'merk' => fake()->randomElement(['Nike', 'Adidas', 'Puma']),
-            'jumlah' => fake()->numberBetween(1, 10),
-            'tgl_beli' => fake()->date(),
+            'jumlah' => fake()->numberBetween(1,10),
         ];
         
     }

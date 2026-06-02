@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,5 @@ Route::post('/product/store', [ProductController::class, 'store'])->name('produc
 Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
 Route::put('/product/{product}', [ProductController::class, 'update'])->name('product.update');
 Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+Route::resource('category', CategoryController::class);

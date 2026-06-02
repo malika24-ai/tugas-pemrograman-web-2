@@ -10,7 +10,7 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label"> Name pembeli</label>
                     <input type="text" class="form-control @error('name_pembeli') is-invalid @enderror"
-                        id="name_pembeli" name="name_pembeli" value="{{ old('name_pembeli', $product->name_pembeli) }}">
+                        id="name_pembeli" name="name_pembeli" value="{{ old('name_pembeli') }}">
                     @error('name_pembeli')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -18,37 +18,21 @@
 
                 <label for="exampleInputEmail1" class="form-label"> Name Product</label>
                 <input type="text" class="form-control @error('name_product') is-invalid @enderror" id="name_product"
-                    name="name_product" value="{{ old('name_product', $product->name_product) }}">
+                    name="name_product" value="{{ old('name_product') }}">
                 @error('name_product')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Merk</label>
-                <input type="text" class="form-control @error('merk') is-invalid @enderror" id="merk"
-                    name="merk" value="{{ old('merk', $product->merk) }}">
-                @error('merk')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Jumlah</label>
                 <input type="number" class="form-control @error('jumlah') is-invalid @enderror" id="jumlah"
-                    name="jumlah" value="{{ old('jumlah', $product->jumlah) }}">
+                    name="jumlah" value="{{ old('jumlah') }}">
                 @error('jumlah')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
 
-
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Tanggal beli</label>
-                <input type="text" class="form-control @error('tgl_beli') is-invalid @enderror" id="tgl_beli"
-                    name="tgl_beli" value="{{ old('tgl_beli', $product->tgl_beli) }}"> @error('tgl_beli')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
 
             <a class="btn btn-warning " href="{{ route('product.index') }}" role="button">Cancel</a>
 

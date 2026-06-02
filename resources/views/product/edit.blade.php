@@ -26,14 +26,6 @@
             </div>
 
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Merk</label>
-                <input type="text" class="form-control @error('merk') is-invalid @enderror" id="merk"
-                    name="merk" value="{{ old('merk') }}">
-                @error('merk')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Jumlah</label>
                 <input type="number" class="form-control @error('jumlah') is-invalid @enderror" id="jumlah"
                     name="jumlah" value="{{ old('jumlah') }}">
@@ -42,14 +34,6 @@
                 @enderror
             </div>
 
-
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Tanggal beli</label>
-                <input type="text" class="form-control @error('tgl_beli') is-invalid @enderror" id="tgl_beli"
-                    name="tgl_beli" value="{{ old('tgl_beli') }}"> @error('tgl_beli')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
 
             <a class="btn btn-warning " href="{{ route('product.index') }}" role="button">Cancel</a>
 
