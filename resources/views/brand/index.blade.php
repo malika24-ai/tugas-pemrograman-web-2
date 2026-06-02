@@ -1,51 +1,51 @@
 <x-app>
 
-    <x-slot:title>{{ $title }}</x-slot:title>
+    <x-slot:title> {{ $title }}</x-slot:>
 
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    <div class="btn btn-info mb-3" href="{{ route('brand.create') }}" role="button">Create</div>
-    <form action="{{ route('brand.index') }}" method="GET">
-
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <input type="text" class="form-control" id="search" name="search" placeholder="Search brand name"
-                    value="{{ request('search') }}">
+        @session('success')
+            <div class="alert alert-success">
+                {{ session('success') }}
             </div>
-            <div class="col-md-4">
-                <button class="btn btn-success" type="submit">Search</button>
+        @endsession
+
+        <a class="btn btn-info mb-3" href="{{ route('brand.create') }}" role="button">Create</a>
+
+        <form action ="">
+            <div class="input-group mb-3">
+                <div class="col-md-8">
+                    <input type="text" class="form-control" id="search" name="search"
+                        placeholder="Search brand name">
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </div>
             </div>
-        </div>
-    </form>
-    <ul class="list-group">
-        @foreach ($brands as $brand)
-            <li class="list-group-item">
-                {{ $brands->firstItem() + $loop->index }} .{{ $brand->name }}--{{ $brand->category->name }}
+        </form>
 
-                <div class="btn btn-warning btn-sm" href="{{ route('brand.edit', $brand) }}">Edit</div>
+        <ul class="list-group">
+            @foreach ($brands as $brand)
+                <li class="list-group-item"> {{ $brands->firstItem() + $loop->index }} .
+                    {{ $brand->name }}--{{ $brand->category->name }}
 
-                <div class="btn btn-info btn-sm" href="{{ route('brand.show', $brand) }}">Detail</div>
 
-                <form action="{{ route('brand.destroy', $brand) }}" method="POST" class="d-inline">
+                    <a href="{{ route('brand.show', $brand->id) }}" class="btn btn-info">Detail </a>
 
-                    @csrf
-                    @method('DELETE')
+                    <a class="btn btn-warning " href="{{ route('brand.edit', $brand) }}" role="button">edit</a>
 
-                    <button type="submit" class="btn btn-danger btn-sm"
-                        onclick="return confirm('Anda yakin?')">Delete</button>
-                </form>
+                    <form action="{{ route('brand.destroy', $brand) }}" method="POST" class="d-inline">
+                        @method('DELETE')
+                        @csrf
 
-            </li>
-        @endforeach
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            onclick ="return confirm('Anda yakin')">Delete</button>
 
-    </ul>
+                    </form>
 
-    <div class="mt-3">
+
+                </li>
+            @endforeach
+        </ul>
+
         {{ $brands->links() }}
-    </div>
 
 </x-app>

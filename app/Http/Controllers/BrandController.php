@@ -33,7 +33,7 @@ class BrandController extends Controller
     return view('brand.index', [
         'title' => 'Data Brand',
         'brands' => $brands,
-        'categories' => $categories,
+        'categorys' => $categories,
     ]);
     }
 
@@ -42,10 +42,10 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('brand.create',
-        ['title' => 'Create Brand',
-        'categories' => Category::latest()->get(),
-        ]);
+        return view('brand.create', [
+        'title' => 'Create Brand',
+        'categorys' => Category::all(),
+    ]);
     }
     
 
@@ -57,15 +57,14 @@ class BrandController extends Controller
         $validated = $request->validate([
         'name' => 'required|max:255',
         'category_id' => 'required|exists:categories,id',
-        
     ],
     [
         'name.required' => 'Nama brand wajib diisi',
         'category_id.required' => 'Kategori wajib dipilih',
-        'category_id.exists' => 'Kategori yang dipilih tidak valid',
     ]);
 
     Brand::create($validated);
+
     return redirect()->route('brand.index')
         ->with('success', 'Data berhasil ditambahkan');
     }
@@ -75,7 +74,10 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-
+            return view('brand.show', [
+            'title' => 'Detail Brand',
+            'brand' => $brand,
+        ]);
     }
 
     /**
@@ -86,7 +88,7 @@ class BrandController extends Controller
         return view('brand.edit', [
             'title' => 'Edit Brand',
             'brand' => $brand,
-            'categories' => Category::all(),
+            'categorys' => Category::all(),
         ]);
     }
 

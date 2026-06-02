@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index',
+        return view('category.index', 
             ['title' => 'Category',
                 'categories' => Category::latest()->get(),
             ]);
@@ -23,8 +23,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create',
-            ['title' => 'Create Category']);
+        return view('category.create', [
+        'title' => 'Create Category'
+    ]);
     }
 
     /**
