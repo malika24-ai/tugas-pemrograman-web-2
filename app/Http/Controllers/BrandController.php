@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class BrandController extends Controller
 {
@@ -23,15 +24,32 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('brand.create',
+        ['title' => 'Create Brand',
+        'categorys' => Category::latest()->get(),
+        ]);
     }
+    
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+        'name_product' => 'required|max:255',
+        'category_id' => 'required|exists:categories,id',
+        
+    ],
+    [
+        'name_product.required' => 'Nama produk wajib diisi',
+        'category_id.required' => 'Kategori wajib dipilih',
+        'category_id.exists' => 'Kategori yang dipilih tidak valid',
+    ]);
+
+    Brand::create($validated);
+    return redirect()->route('product.index')
+        ->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
