@@ -2,6 +2,12 @@
 
     <x-slot:title> {{ $title }}</x-slot:>
 
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         @session('success')
             <div class="alert alert-success">
                 {{ session('success') }}

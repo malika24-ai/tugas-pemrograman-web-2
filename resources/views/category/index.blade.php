@@ -33,4 +33,6 @@
             @endforeach
         </ul>
 
+        {{ $categories->links() }}
+
 </x-app>
