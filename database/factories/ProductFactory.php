@@ -19,13 +19,17 @@ class ProductFactory extends Factory
     {
         return [
         'name_pembeli' => fake()->name(),
-        'name_product' => fake()->randomElement([
-        'Nike Air Max',
-        'Adidas Samba',
-        'Puma Future'
-    ]),
+
+            'name_product' => fake()->randomElement([
+                'Nike Air',
+                'Adidas Samba',
+                'Puma Sport',
+                'Converse High',
+                'New Balance'
+            ]),
+
             'jumlah' => fake()->numberBetween(1,10),
+
         ];
-        
     }
 }

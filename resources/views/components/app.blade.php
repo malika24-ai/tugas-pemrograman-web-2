@@ -23,6 +23,7 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" href="{{ route('product.index') }}">Product</a>
                     <a class="nav-link active" href="{{ route('category.index') }}">Category</a>
+                    <a class="nav-link active" href="{{ route('brand.index') }}">Brand</a>
 
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -18,3 +19,4 @@ Route::put('/product/{product}', [ProductController::class, 'update'])->name('pr
 Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 Route::resource('category', CategoryController::class);
+Route::resource('brand', BrandController::class);
