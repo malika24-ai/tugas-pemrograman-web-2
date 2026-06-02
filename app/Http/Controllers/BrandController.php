@@ -11,12 +11,30 @@ class BrandController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('brand.index',
-        ['title' => 'Brand',
-        'brands' => Brand::latest()->paginate(3),
-        ]);  
+        $search = $request->search;
+    $category = $request->category;
+
+    $brands = Brand::with('category')
+
+        ->when($search, function ($query) use ($search) {
+            $query->where('name', 'like', "%{$search}%");
+        })
+
+        ->when($category, function ($query) use ($category) {
+            $query->where('category_id', $category);
+        })
+        ->paginate(5)
+        ->withQueryString();
+
+    $categories = Category::all();
+
+    return view('brand.index', [
+        'title' => 'Data Brand',
+        'brands' => $brands,
+        'categories' => $categories,
+    ]);
     }
 
     /**
