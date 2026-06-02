@@ -13,9 +13,9 @@ class CategoryController extends Controller
     public function index()
     {
         return view('category.index',
-        ['title' => 'Category',
-        'categories' => Category::latest()->get(),
-        ]);  
+            ['title' => 'Category',
+                'categories' => Category::latest()->get(),
+            ]);
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoryController extends Controller
     public function create()
     {
         return view('category.create',
-        ['title' => 'Create Category']);
+            ['title' => 'Create Category']);
     }
 
     /**
@@ -33,17 +33,18 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-        'name' => 'required|max:255',
-        
-    ],
-    [
-        'name.required' => 'Nama kategori wajib diisi',
+            'name' => 'required|max:255',
 
-    ]);
+        ],
+            [
+                'name.required' => 'Nama kategori wajib diisi',
 
-    Category::create($validated);
-    return redirect()->route('category.index')
-        ->with('success', 'Data berhasil ditambahkan');
+            ]);
+
+        Category::create($validated);
+
+        return redirect()->route('category.index')
+            ->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -51,7 +52,10 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('category.show', [
+            'title' => 'Detail Category',
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -60,10 +64,10 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         return view('category.edit', [
-        'title' => 'Edit Category',
-        'category' => $category,
-    ]);
-    
+            'title' => 'Edit Category',
+            'category' => $category,
+        ]);
+
     }
 
     /**
@@ -72,17 +76,18 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validated = $request->validate([
-        'name' => 'required|max:255',
-        
-    ],
-    [
-        'name.required' => 'Nama kategori wajib diisi',
-        
-    ]);
+            'name' => 'required|max:255',
+
+        ],
+            [
+                'name.required' => 'Nama kategori wajib diisi',
+
+            ]);
 
         $category->update($validated);
+
         return redirect()->route('category.index')
-        ->with('success', 'Data berhasil di ubah');
+            ->with('success', 'Data berhasil di ubah');
     }
 
     /**
@@ -91,6 +96,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('category.index') ->with('success', 'Data berhasil dihapus');
+
+        return redirect()->route('category.index')->with('success', 'Data berhasil dihapus');
     }
 }
