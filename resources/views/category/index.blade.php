@@ -2,6 +2,8 @@
 
     <x-slot:title> {{ $title }}</x-slot:>
 
+
+
         @session('success')
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -10,10 +12,32 @@
 
         <a class="btn btn-info mb-3" href="{{ route('category.create') }}" role="button">Create</a>
 
+        <form action="{{ route('brand.index') }}" method="GET">
+            <div class="input-group mb-3">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="search" name="search"
+                        placeholder="Search brand name.." value="{{ old('keyword') }}">
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" id="category" name="category">
+                        <option value="">All Categories</option>
+                        @foreach ($categorys as $category)
+                            <option value="{{ $category->id }}"
+                                {{ request('category') == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
         <ul class="list-group">
-            @foreach ($categories as $category)
+            @foreach ($categorys as $category)
                 <li class="list-group-item"> {{ $loop->iteration }} .
-                    {{ $category->name }}
+                    {{ $category->name }}-- {{ $category->code }} -- {{ $category->detail }}
 
                     <a href="{{ route('category.show', $category->id) }}" class="btn btn-info">Detail </a>
 
@@ -32,7 +56,5 @@
                 </li>
             @endforeach
         </ul>
-
-        {{ $categories->links() }}
-
+        {{ $categorys->links() }}
 </x-app>

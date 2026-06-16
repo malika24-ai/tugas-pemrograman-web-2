@@ -15,6 +15,23 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"> Code </label>
+                    <input type="text" class="form-control @error('code') is-invalid @enderror" id="code"
+                        name="code" value="{{ old('code') }}">
+                    @error('code')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"> Detail </label>
+                    <input type="text" class="form-control @error('detail') is-invalid @enderror" id="detail"
+                        name="detail" value="{{ old('detail') }}">
+                    @error('detail')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
 
                 <a class="btn btn-warning " href="{{ route('product.index') }}" role="button">Cancel</a>
 

@@ -2,25 +2,29 @@
 
     <x-slot:title> {{ $title }}</x-slot:>
 
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
         @session('success')
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endsession
-
         <a class="btn btn-info mb-3" href="{{ route('brand.create') }}" role="button">Create</a>
 
-        <form action ="">
+        <form action="{{ route('brand.index') }}" method="GET">
             <div class="input-group mb-3">
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <input type="text" class="form-control" id="search" name="search"
-                        placeholder="Search brand name">
+                        placeholder="Search brand name..">
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" id="category" name="category">
+                        <option value="">All Categories</option>
+                        @foreach ($categorys as $category)
+                            <option value="{{ $category->id }}"
+                                {{ request('category') == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <button class="btn btn-success" type="submit">Search</button>
@@ -31,7 +35,8 @@
         <ul class="list-group">
             @foreach ($brands as $brand)
                 <li class="list-group-item"> {{ $brands->firstItem() + $loop->index }} .
-                    {{ $brand->name }}--{{ $brand->category->name }}
+                    {{ $brand->name }}--{{ $brand->category->name }}--{{ $brand->jenis }}--
+                    {{ $brand->tahun_berdiri }}--{{ $brand->status }}>
 
 
                     <a href="{{ route('brand.show', $brand->id) }}" class="btn btn-info">Detail </a>

@@ -20,7 +20,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto"> ">
+                <div class="navbar-nav ms-auto">
                     <a class="nav-link active" href="{{ route('product.index') }}">Product</a>
                     <a class="nav-link active" href="{{ route('category.index') }}">Category</a>
                     <a class="nav-link active" href="{{ route('brand.index') }}">Brand</a>

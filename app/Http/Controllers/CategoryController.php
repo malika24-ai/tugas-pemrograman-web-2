@@ -12,9 +12,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index', 
+        $categorys = Category::paginate(5);
+
+        return view('category.index',
             ['title' => 'Category',
-                'categories' => Category::latest()->get(),
+                'categorys' => $categorys,
             ]);
     }
 
@@ -24,8 +26,8 @@ class CategoryController extends Controller
     public function create()
     {
         return view('category.create', [
-        'title' => 'Create Category'
-    ]);
+            'title' => 'Create Category',
+        ]);
     }
 
     /**
@@ -35,10 +37,14 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:255',
+            'code' => 'required|max:255',
+            'detail' => 'required|max:255',
 
         ],
             [
                 'name.required' => 'Nama kategori wajib diisi',
+                'code.required' => 'Kode kategori wajib diisi',
+                'detail.required' => 'Detail kategori wajib diisi',
 
             ]);
 
@@ -78,10 +84,14 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:255',
+            'code' => 'required|max:255',
+            'detail' => 'required|max:255',
 
         ],
             [
                 'name.required' => 'Nama kategori wajib diisi',
+                'code.required' => 'Kode kategori wajib diisi',
+                'detail.required' => 'Detail kategori wajib diisi',
 
             ]);
 
@@ -96,7 +106,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
+        $category->delete($category);
 
         return redirect()->route('category.index')->with('success', 'Data berhasil dihapus');
     }

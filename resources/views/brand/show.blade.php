@@ -18,12 +18,17 @@
         </li>
     </ul>
 
-    {{-- lecturer --}}
-    <h4>Data Brands</h4>
+    {{-- category --}}
+    <h4>Data Category</h4>
+
     <ul class="list-group">
-        @foreach ($category->brands as $brand)
-            <li class="list-group-item">{{ $brand->name }}</li>
-        @endforeach
+
+        <li class="list-group-item">
+
+            {{ $brand->category?->name }}
+
+        </li>
+
     </ul>
 
 

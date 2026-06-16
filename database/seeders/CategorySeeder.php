@@ -13,12 +13,38 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::create(['name' => 'Sepatu Running']);
-        Category::create(['name' => 'Sepatu Casual']);
-        Category::create(['name' => 'Sepatu basket']);
-        Category::create(['name' => 'Sepatu futsal']);
-        Category::create(['name' => 'Sepatu sneakers']);
-        Category::create(['name' => 'Sepatu boots']);
-        Category::create(['name' => 'Sepatu formal']);
+        Category::create(['name' => 'Sepatu Running',
+            'code' => 'SR',
+            'detail' => 'Sepatu yang dirancang khusus untuk aktivitas lari,
+            memberikan kenyamanan dan dukungan yang optimal.']);
+
+        Category::create(['name' => 'Sepatu Casual',
+            'code' => 'SC',
+            'detail' => 'Sepatu yang nyaman untuk digunakan sehari-hari, 
+            cocok untuk berbagai kesempatan.']);
+
+        Category::create(['name' => 'Sepatu basket',
+            'code' => 'SB',
+            'detail' => 'Sepatu yang dirancang khusus untuk permainan basket, 
+            memberikan dukungan dan kestabilan saat bergerak di lapangan.']);
+
+        Category::create(['name' => 'Sepatu futsal',
+            'code' => 'SF',
+            'detail' => 'Sepatu yang dirancang khusus untuk permainan futsal,
+            memberikan grip yang baik di permukaan lantai.']);
+
+        Category::create(['name' => 'Sepatu sneakers',
+            'code' => 'SS',
+            'detail' => 'Sepatu yang stylish dan nyaman, 
+            cocok untuk digunakan sehari-hari atau sebagai fashion statement.']);
+
+        Category::create(['name' => 'Sepatu boots',
+            'code' => 'SBO',
+            'detail' => 'Sepatu yang dilengkapi dengan bagian atas yang tinggi,
+            memberikan perlindungan dan dukungan tambahan untuk kaki.']);
+        Category::create(['name' => 'Sepatu formal',
+            'code' => 'SF',
+            'detail' => 'Sepatu yang dirancang khusus untuk keperluan formal, 
+            memberikan kesan profesional dan nyaman saat dipakai.']);
     }
 }

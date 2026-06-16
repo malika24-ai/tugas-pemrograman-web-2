@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->string('name');
+            $table->string('jenis');
+            $table->string('tahun_berdiri');
+            $table->string('status');
             $table->timestamps();
         });
     }

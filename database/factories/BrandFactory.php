@@ -21,6 +21,9 @@ class BrandFactory extends Factory
         return [
         'name' => fake()->company(),
         'category_id' => Category::inRandomOrder()->first()->id,
+        'jenis' => fake()->randomElement(['Sepatu Olahraga', 'Sepatu Formal', 'Sepatu Kasual']),
+        'tahun_berdiri' => fake()->year(),
+        'status' => fake()->randomElement(['Aktif', 'Tidak Aktif']),
         ];
         
     }

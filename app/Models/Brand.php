@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['name_pembeli', 'category_id'])]
+#[Fillable(['name', 'category_id','jenis', 'tahun_berdiri', 'status'])]
 class Brand extends Model
 {
     // Mengaktifkan fitur factory untuk model ini
