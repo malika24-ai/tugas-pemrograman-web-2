@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('harga')->default(0);
+            $table->integer('harga')->default(500000);
             $table->softDeletes();
 
         });
@@ -25,7 +25,7 @@ return new class extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             
-            $table->dropColumn('harga',['100.000','200.000','300.000','400.000','500.000']);
+            $table->dropColumn('harga');
             $table->dropSoftDeletes();
         });
     }

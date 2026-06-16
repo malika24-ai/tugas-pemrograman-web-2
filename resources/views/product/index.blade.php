@@ -14,7 +14,7 @@
             @foreach ($products as $product)
                 <li class="list-group-item"> {{ $loop->iteration }} .
                     {{ $product->name_pembeli }} --{{ $product->name_product }} --
-                    {{ $product->jumlah }}
+                    {{ $product->jumlah }} -- {{ $product->harga }}
 
                     <a class="btn btn-warning " href="{{ route('product.edit', $product) }}" role="button">edit</a>
 
