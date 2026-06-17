@@ -32,25 +32,55 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        
-        $validated = $request->validate([
+{
+
+    $validated = $request->validate([
+
         'name_product' => 'required|max:255',
+
         'name_pembeli' => 'required|max:255',
+
         'jumlah' => 'required|integer',
+
+        'harga' => 'required|integer',
+
     ],
     [
+
         'name_product.required' => 'Nama produk wajib diisi',
         'name_pembeli.required' => 'Nama pembeli wajib diisi',
         'jumlah.required' => 'Jumlah wajib diisi',
         'jumlah.integer' => 'Jumlah harus berupa angka',
+        'harga.required' => 'Harga wajib diisi',
+        'harga.integer' => 'Harga harus berupa angka',
+
     ]);
 
-    Product::create($validated);
-    return redirect()->route('product.index')
+
+
+    DB::beginTransaction();
+    try {
+
+        Product::create($validated);
+        DB::commit();
+
+        return redirect()->route('product.index')
         ->with('success', 'Data berhasil ditambahkan');
 
+
+    } catch(\Exception $e) {
+
+
+        DB::rollBack();
+
+        return back()
+        ->with('error', $e->getMessage());
+
+
     }
+
+
+}
 
     /**
      * Display the specified resource.
@@ -74,25 +104,47 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
-    {
-        $validated = $request->validate([
+   public function update(Request $request, Product $product)
+{
+
+    $validated = $request->validate([
+
         'name_product' => 'required|max:255',
         'jumlah' => 'required|integer',
+        'harga' => 'required|integer',
+
     ],
     [
+
         'name_product.required' => 'Nama produk wajib diisi',
-        'name_pembeli.required' => 'Nama pembeli wajib diisi',
         'jumlah.required' => 'Jumlah wajib diisi',
         'jumlah.integer' => 'Jumlah harus berupa angka',
-        
+        'harga.required' => 'Harga wajib diisi',
+        'harga.integer' => 'Harga harus berupa angka',
+
     ]);
 
-    $product->update($validated);
-    return redirect()->route('product.index')
+    DB::beginTransaction();
+    try {
+
+        $product->update($validated);
+        DB::commit();
+
+        return redirect() ->route('product.index')
         ->with('success', 'Data berhasil di ubah');
 
+
+    } catch(\Exception $e) {
+
+
+        DB::rollBack();
+        return back()->with('error', $e->getMessage());
+
+
     }
+
+
+}
 
     /**
      * Remove the specified resource from storage.
