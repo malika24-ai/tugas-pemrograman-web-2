@@ -163,5 +163,14 @@ class ProductController extends Controller
         'products' => Product::onlyTrashed()->latest()->get(),
         ]);  
     }
-
+        public function restore(Product $product)
+    {
+        $product->restore();
+        return redirect()->route('product.trash') ->with('success', 'Data berhasil dikembalikan');
+    }
+        public function forceDelete(Product $product)
+    {
+        $product->forceDelete();
+        return redirect()->route('product.trash') ->with('success', 'Data berhasil dihaus secara permanen');
+    }
 }
