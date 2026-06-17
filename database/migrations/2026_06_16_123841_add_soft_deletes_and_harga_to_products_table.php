@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('harga')->default(500000);
+            $table->integer('harga')->default(0);
             $table->softDeletes();
 
         });

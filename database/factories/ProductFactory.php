@@ -29,6 +29,7 @@ class ProductFactory extends Factory
             ]),
 
             'jumlah' => fake()->numberBetween(1,10),
+            'harga' => fake()->numberBetween(100,1000),
 
         ];
     }

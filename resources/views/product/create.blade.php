@@ -33,6 +33,21 @@
                 @enderror
             </div>
 
+            <div class="mb-3">
+
+                <label for="harga" class="form-label">Harga </label>
+                <input type="number" class="form-control @error('harga') is-invalid @enderror" id="harga"
+                    name="harga"value="{{ old('harga') }}">
+
+                @error('harga')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
+
+
+            </div>
+
 
             <a class="btn btn-warning " href="{{ route('product.index') }}" role="button">Cancel</a>
 
