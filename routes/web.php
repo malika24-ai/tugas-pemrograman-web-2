@@ -19,6 +19,8 @@ Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name
 
 //soft deletes
 Route::get('/product/trash',[ProductController::class,'trash'])->name('product.trash');
+Route::get('/product/restore',[ProductController::class,'restore'])->name('product.restore')
+->withTrashed();
 
 Route::resource('category', CategoryController::class);
 Route::resource('brand', BrandController::class);
