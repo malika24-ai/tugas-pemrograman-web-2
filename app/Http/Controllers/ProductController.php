@@ -155,4 +155,13 @@ class ProductController extends Controller
         return redirect()->route('product.index') ->with('success', 'Data berhasil dihapus');
     }
 
+    //soft deletes
+    public function trash()
+    {
+        return view('product.trash',
+        ['title' => ' Trash Product',
+        'products' => Product::onlyTrashed()->latest()->get(),
+        ]);  
+    }
+
 }

@@ -24,6 +24,7 @@
                     <a class="nav-link active" href="{{ route('product.index') }}">Product</a>
                     <a class="nav-link active" href="{{ route('category.index') }}">Category</a>
                     <a class="nav-link active" href="{{ route('brand.index') }}">Brand</a>
+                    <a class="nav-link active" href="{{ route('product.trash') }}">Trash</a>
 
                 </div>
             </div>
